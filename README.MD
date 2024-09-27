@@ -6,11 +6,11 @@
 
 ### Implementar distintos servicios RESTful para:
 
-- (a) Agregar una materia prima
-- (b) Obtener una materia prima por su ID
-- (c) Obtener todos las materias prima
-- (d) Actualizar una materia prima
-- (e) Eliminar una materia prima
+- (a) Agregar una materia prima (ingrediente)
+- (b) Obtener una materia prima por su ID (ingrediente)
+- (c) Obtener todos las materias prima (ingrediente)
+- (d) Actualizar una materia prima (ingrediente)
+- (e) Eliminar una materia prima (ingrediente)
 
 ## Ejercicio 2
 - (a) Implementar el patrón Singleton para el acceso a la base de datos.
