@@ -2,7 +2,9 @@ package com.tp2spark;
 
 import org.sql2o.Sql2o;
 
+import com.tp2spark.controllers.MateriaPrimaControlador;
 import com.tp2spark.utils.Sql2oDAO;
+import static spark.Spark.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,6 +17,6 @@ public class Main {
             System.err.println("No se pudo conectar a la base de datos: " +
                     e.getMessage());
         } */
-
+        get("/insertarMP",MateriaPrimaControlador.insertMateriaPrima);
     }
 }
