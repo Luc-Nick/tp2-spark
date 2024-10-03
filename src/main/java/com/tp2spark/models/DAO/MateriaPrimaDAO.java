@@ -7,7 +7,7 @@ import java.util.*;
 
 import org.sql2o.Connection;
 
-public class MateriaPrimaDAO {
+public class MateriaPrimaDAO implements IMateriaPrimaDAO {
 
     public int insertMP() {
 
@@ -23,4 +23,30 @@ public class MateriaPrimaDAO {
             return 0;
         }
     }
+
+    public MateriaPrima getMPById(){
+        MateriaPrima materiaPrima = new MateriaPrima();
+        return materiaPrima;
+    } //Obtener una materia prima por su ID
+
+
+    public List<MateriaPrima> getAllMP(){
+        List<MateriaPrima> materiasPrimas = null;
+
+        return materiasPrimas;
+    } //Obtener todos las materias prima
+
+
+    public int updateMP(){
+        int id = 0;
+
+        return id;
+    } //Actualizar una materia prima
+
+
+    public int deleteMP(){
+        int id = 0; 
+
+        return id; 
+    } //Eliminar una materia prima
 }

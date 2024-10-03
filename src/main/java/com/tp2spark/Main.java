@@ -17,6 +17,6 @@ public class Main {
             System.err.println("No se pudo conectar a la base de datos: " +
                     e.getMessage());
         } */
-        get("/insertarMP",MateriaPrimaControlador.insertMateriaPrima);
+        post("/insertarMP",MateriaPrimaControlador.insertMateriaPrima);
     }
 }
