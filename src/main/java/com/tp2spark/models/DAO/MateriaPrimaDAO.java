@@ -9,11 +9,15 @@ import org.sql2o.Connection;
 
 public class MateriaPrimaDAO implements IMateriaPrimaDAO {
 
-    public int insertMP() {
+    public int insertMP(MateriaPrima materiaPrima) {
 
-        String insertSQL = "INSERT INTO `materiaprima` (`nombre`, `descripcion`, `stock`, `unidadMedida`) VALUES ('Azúcar Moreno', 'ninguna', '1000', 'grs')";
         try (Connection con = Sql2oDAO.getSql2o().open()) {
+            String insertSQL = "INSERT INTO `materiaprima` (`nombre`, `descripcion`, `stock`, `unidadMedida`) " +  "VALUES (:nombre,:descripcion,:stock,:unidadMedida)";
             int id = con.createQuery(insertSQL, true)
+                    .addParameter("nombre", materiaPrima.getNombre())
+                    .addParameter("descripcion", materiaPrima.getDescripcion())
+                    .addParameter("stock", materiaPrima.getStock())
+                    .addParameter("unidadMedida", materiaPrima.getUnidadMedida())
                     .executeUpdate()
                     .getKey(Integer.class);
             return id;
