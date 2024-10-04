@@ -9,6 +9,12 @@ import org.sql2o.Connection;
 
 public class MateriaPrimaDAO implements IMateriaPrimaDAO {
 
+    /*A tener en cuenta al crear la DB: Los nombres de las columnas de la tabla
+     en la base de datos deben coincidir con los nombres de los atributos de la clase 
+     exactamente (respetando mayúsculas y minúsculas) o estar en una convención que pueda mapearse fácilmente. 
+     De lo contrario se debe solucionar por ejemplo, usando Alias en las consultas SQL para ajustar los nombres. 
+     */
+
     public int insertMP(MateriaPrima materiaPrima) {
 
         try (Connection con = Sql2oDAO.getSql2o().open()) {
@@ -28,10 +34,20 @@ public class MateriaPrimaDAO implements IMateriaPrimaDAO {
         }
     }
 
-    public MateriaPrima getMPById(){
-        MateriaPrima materiaPrima = new MateriaPrima();
-        return materiaPrima;
+    public MateriaPrima getMPById(int id) {
+
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            String querySQL = "SELECT * FROM `materiaprima` WHERE `id` = :id";
+            MateriaPrima resMP = con.createQuery(querySQL)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(MateriaPrima.class); // Usar executeAndFetchFirst para obtener el primer registro que encuentre
+            return resMP;
+        } catch (Exception e) {
+            System.err.println("Error al ejecutar la query: " + e.getMessage());
+            return null;
+        }
     } //Obtener una materia prima por su ID
+    
 
 
     public List<MateriaPrima> getAllMP(){

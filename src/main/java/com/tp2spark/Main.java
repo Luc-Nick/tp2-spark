@@ -18,5 +18,6 @@ public class Main {
                     e.getMessage());
         } */
         post("/insertarMP",MateriaPrimaControlador.insertMateriaPrima);
+        get("/getMateriaPrima",MateriaPrimaControlador.getMateriaPrimaPorId);
     }
 }

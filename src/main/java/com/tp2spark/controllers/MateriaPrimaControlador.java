@@ -10,6 +10,8 @@ import spark.Response;
 import spark.Route;
 
 public class MateriaPrimaControlador {
+
+    //(a) Agregar una materia prima (ingrediente)
     public static Route insertMateriaPrima = (Request req, Response res) -> {
 
         Gson gson = new Gson();
@@ -37,4 +39,22 @@ public class MateriaPrimaControlador {
             return "Error en el formato del JSON: " + e.getMessage();
         }
     };
+
+    //(b) Obtener una materia prima por su ID (ingrediente)
+    public static Route  getMateriaPrimaPorId = (Request req, Response res) -> {
+        int idMateriaPrima = Integer.parseInt(req.queryParams("id"));
+        MateriaPrimaDAO mpDAO = new MateriaPrimaDAO();
+        MateriaPrima materiaPrima = mpDAO.getMPById(idMateriaPrima);
+
+        if (materiaPrima != null) {
+            //Convertir el objeto a JSON
+            Gson gson = new Gson();
+            res.type("application/json");
+            return gson.toJson(materiaPrima);
+        } else {
+            res.status(404); // Establecer el código de estado HTTP 404 si no se encuentra el objeto
+            return "Materia prima no encontrada";
+        }
+    };
+
 }
