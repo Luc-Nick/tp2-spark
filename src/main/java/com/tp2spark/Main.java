@@ -20,5 +20,7 @@ public class Main {
         post("/insertarMP",MateriaPrimaControlador.insertMateriaPrima);
         get("/getMateriaPrima",MateriaPrimaControlador.getMateriaPrimaPorId);
         get("/getAllMP",MateriaPrimaControlador.getAllMateriaPrima);
+        post("/updateMP",MateriaPrimaControlador.updateMateriaPrima);
+        post("/deleteMP",MateriaPrimaControlador.deleteMateriaPrima);
     }
 }
