@@ -1,5 +1,7 @@
 package com.tp2spark.controllers;
 
+import java.util.List;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.tp2spark.models.DAO.MateriaPrimaDAO;
@@ -57,4 +59,25 @@ public class MateriaPrimaControlador {
         }
     };
 
+    public static Route getAllMateriaPrima = (Request req, Response res) -> {
+        MateriaPrimaDAO mpDAO = new MateriaPrimaDAO();
+        List<MateriaPrima> materiasPrimas = mpDAO.getAllMP();
+
+    if (materiasPrimas != null && !materiasPrimas.isEmpty()) {
+        Gson gson = new Gson();
+        res.type("application/json");
+        return gson.toJson(materiasPrimas);
+    } else {
+        res.status(404);
+        return "No se encontraron materias primas";
+    }
+    };
+
+
+
+
+    public static Route deleteMateriaPrima = (Request req, Response res) -> {
+        int mpID = Integer.parseInt(req.queryParams("id"));
+        
+    };
 }

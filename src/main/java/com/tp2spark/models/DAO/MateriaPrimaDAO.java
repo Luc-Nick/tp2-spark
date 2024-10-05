@@ -51,9 +51,16 @@ public class MateriaPrimaDAO implements IMateriaPrimaDAO {
 
 
     public List<MateriaPrima> getAllMP(){
-        List<MateriaPrima> materiasPrimas = null;
-
-        return materiasPrimas;
+        
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            String querySQL = "SELECT * FROM `materiaprima`";
+            // Usar executeAndFetch para obtener la respuesta como una lista y parsearla con la clase
+            List<MateriaPrima> materiasPrimas = con.createQuery(querySQL).executeAndFetch(MateriaPrima.class); 
+            return materiasPrimas;
+        } catch (Exception e) {
+            System.err.println("Error al ejecutar la query: " + e.getMessage());
+            return null;
+        }
     } //Obtener todos las materias prima
 
 
