@@ -18,9 +18,10 @@ public class Main {
             System.err.println("No se pudo conectar a la base de datos: " +
                     e.getMessage());
         }
-        // get("/materias-primas", MateriaPrimaControlador.getTodasLasMateriasPrimas);
+        get("/materias-primas", MateriaPrimaControlador.getTodasLasMateriasPrimas);
         // post("/materias-primas", MateriaPrimaControlador.insertar_materiaP);
         // get("/materiaprima/:id", MateriaPrimaControlador.buscarPorId);
-        post("/materiaPrima/actualizar", MateriaPrimaControlador.actualizarMateriaPrima);
+        // post("/materiaprima/actualizar",
+        // MateriaPrimaControlador.actualizarMateriaPrima);
     }
 };
