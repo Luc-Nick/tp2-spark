@@ -79,5 +79,27 @@ public class MateriaPrimaControlador {
             return "Materia Prima no encontrada"; // Mensaje de error
         }
     };
+    // -------------------------------(d)----------------------------------------------------------------
+    public static Route actualizarMateriaPrima = (Request request, Response response) -> {
+        response.type("application/json"); // Establecer el tipo de contenido de la respuesta
 
+        try {
+            // Convertir el cuerpo de la solicitud JSON a un objeto MateriaPrima
+            MateriaPrima materiaPrima = new Gson().fromJson(request.body(), MateriaPrima.class);
+
+            // Llamar al método del DAO para actualizar la materia prima
+            boolean resultado = materiaPrimaDAO.actualizar(materiaPrima); // Cambiar a un método que solo use el objeto
+
+            if (resultado) {
+                response.status(200); // Código de éxito
+                return new Gson().toJson("Materia prima actualizada con éxito");
+            } else {
+                response.status(404); // No encontrado
+                return new Gson().toJson("Materia Prima no encontrada");
+            }
+        } catch (Exception e) {
+            response.status(500); // Establecer el estado a 500 en caso de error
+            return new Gson().toJson("Error controlador: " + e.getMessage()); // Devolver mensaje de error
+        }
+    };
 }

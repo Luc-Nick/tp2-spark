@@ -10,4 +10,6 @@ public interface IMateriaPrimaDAO {
     public boolean insert(MateriaPrima materiaPrima);
 
     public MateriaPrima obtener_por_id(int id);
+
+    public boolean actualizar(MateriaPrima materiaPrima);
 }

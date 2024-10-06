@@ -43,7 +43,7 @@ public class MateriaPrimaDAO {
 
         try (Connection con = Sql2oDAO.getSql2o().open()) {
             con.createQuery(insertSQL) // creo la consulta para insertar
-                    .addParameter("id", materiaPrima.getId())
+                    .addParameter("id", materiaPrima.getId()) // lo huso en el momento de la consulta
                     .addParameter("stock", materiaPrima.getStock()) // le tengo que pasar el valor de lo que puse ariva
                     .addParameter("nombre", materiaPrima.getNombre())
                     .addParameter("descripcion", materiaPrima.getDescripcion())
@@ -80,7 +80,25 @@ public class MateriaPrimaDAO {
         return null; // Retorna null si no se encuentra ninguna materia prima
     }
 
-    public void actualizar(MateriaPrima materiaprima) {
+    // -------------------------------(d)-----------------------------------------------------
+    public boolean actualizar(MateriaPrima materiaPrima) {
+        String sql = "UPDATE MATERIA_PRIMA SET nombre = :nombre, descripcion = :descripcion, stock = :stock, unidadMdedida = :unidadMdedida WHERE id = :id";
+
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            int filasActualizadas = con.createQuery(sql)
+                    .addParameter("nombre", materiaPrima.getNombre())
+                    .addParameter("descripcion", materiaPrima.getDescripcion())
+                    .addParameter("stock", materiaPrima.getStock())
+                    .addParameter("unidadMdedida", materiaPrima.getUnidadMedida()) // Agregar unidad de medida aquí
+                    .addParameter("id", materiaPrima.getId())
+                    .executeUpdate()
+                    .getResult();
+
+            return filasActualizadas > 0; // Retorna true si se actualizó al menos una fila
+        } catch (Exception e) {
+            e.printStackTrace(); // Esto te dará más detalles sobre el error
+            return false; // Retorna false si hubo un error
+        }
     }
 
 }
