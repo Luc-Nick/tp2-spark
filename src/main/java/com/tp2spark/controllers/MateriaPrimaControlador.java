@@ -63,4 +63,21 @@ public class MateriaPrimaControlador {
         }
     };
 
+    public static Route buscarPorId = (Request request, Response response) -> {
+        // Obtener el id del parámetro de la solicitud
+        int id = Integer.parseInt(request.params(":id"));
+
+        // Llamar al método del DAO para obtener la materia prima
+        MateriaPrima materiaPrima = materiaPrimaDAO.obtener_por_id(id);
+
+        // Verificar si se encontró la materia prima
+        if (materiaPrima != null) {
+            response.status(200); // Código de éxito
+            return materiaPrima.toString(); // Devolver la información de la materia prima
+        } else {
+            response.status(404); // No encontrado
+            return "Materia Prima no encontrada"; // Mensaje de error
+        }
+    };
+
 }

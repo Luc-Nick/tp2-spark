@@ -62,10 +62,21 @@ public class MateriaPrimaDAO {
     // prima/inquilino/categor´ıa por su
     // ID-------------------------------------------------------------------------
     public MateriaPrima obtener_por_id(int id) {
-        MateriaPrima a;
-        String id_string = String.valueOf(id);
-        String obtenerSql = "SELECT * FROM MATERIA_PRIMA WHERE id = '" + id_string + "'";
-        // Resto del código para ejecutar la consulta
+        // Nota: El uso de comillas simples alrededor de la tabla y las columnas no es
+        // correcto. Deben ser comillas dobles o nada.
+        String obtenerSql = "SELECT * FROM MATERIA_PRIMA WHERE id = :id"; // lo mira en tiempo de ejecucion
 
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            // Ejecuta la consulta y obtiene el resultado
+            MateriaPrima materiaPrima = con.createQuery(obtenerSql) // crea la consulta
+                    .addParameter("id", id) // Aquí pasas el id como parámetro
+                    .executeAndFetchFirst(MateriaPrima.class); // ejecuta y devuelve el primer resultado encontrado
+            // lo convierte
+            return materiaPrima; // Retorna el objeto MateriaPrima encontrado
+        } catch (Exception e) {
+            e.printStackTrace(); // Maneja cualquier excepción
+        }
+        // MateriaPrima.class // nose bien que hace
+        return null; // Retorna null si no se encuentra ninguna materia prima
     }
 }
