@@ -6,4 +6,6 @@ import com.tp2spark.models.objects.MateriaPrima;
 
 public interface IMateriaPrimaDAO {
     List<MateriaPrima> obtenerTodasLasMateriasPrimas();
+
+    boolean insert(MateriaPrima materiaPrima);
 }

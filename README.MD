@@ -8,7 +8,7 @@
 
 - (a) Agregar una materia prima (ingrediente)
 - (b) Obtener una materia prima por su ID (ingrediente)
-- (c) Obtener todos las materias prima (ingrediente)
+- (c) Obtener todos las materias prima (ingrediente) echo
 - (d) Actualizar una materia prima (ingrediente)
 - (e) Eliminar una materia prima (ingrediente)
 

@@ -32,4 +32,26 @@ public class MateriaPrimaDAO {
 
         return res; // Devolver la lista de materias primas
     }
+
+    // Método para insertar una nueva materia prima
+    public boolean insert(MateriaPrima materiaPrima) { // dependencia
+        // La consulta SQL para insertar una nueva materia prima
+        String insertSQL = "INSERT INTO MATERIA_PRIMA (id, stock, nombre, descripcion, unidadMdedida) VALUES (:id, :stock, :nombre, :descripcion, :unidadMedida)";
+
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            con.createQuery(insertSQL) // creo la consulta para insertar
+                    .addParameter("id", materiaPrima.getId())
+                    .addParameter("stock", materiaPrima.getStock()) // le tengo que pasar el valor de lo que puse ariva
+                    .addParameter("nombre", materiaPrima.getNombre())
+                    .addParameter("descripcion", materiaPrima.getDescripcion())
+                    .addParameter("unidadMedida", materiaPrima.getUnidadMedida())
+                    .executeUpdate(); // Ejecuta la consulta de inserción
+            return true; // Retorna true si la inserción fue exitosa
+        } catch (Exception e) {
+            System.err.println("Error al insertar materia prima: " + e.getMessage());
+            return false; // Retorna false si hubo un error
+            // yo con createQuery creo la consulta
+            // con add parameter remplazo los valores que use en la consulta
+        }
+    }
 }

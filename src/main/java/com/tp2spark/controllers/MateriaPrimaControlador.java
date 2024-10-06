@@ -34,4 +34,27 @@ public class MateriaPrimaControlador {
             return new Gson().toJson("Error controlador: " + e.getMessage()); // Devolver mensaje de error
         }
     };
+
+    public static Route insertar_materiaP = (Request request, Response response) -> {
+        response.type("application/json"); // Establecer el tipo de contenido de la respuesta
+
+        try {
+            // Convertir el cuerpo de la solicitud JSON a un objeto MateriaPrima
+            MateriaPrima materiaPrima = new Gson().fromJson(request.body(), MateriaPrima.class);
+
+            // Llamar al método insert del DAO
+            boolean resultado = materiaPrimaDAO.insert(materiaPrima);
+
+            if (resultado) {
+                response.status(201); // Establecer el estado a 201 si la inserción fue exitosa
+                return new Gson().toJson("Materia prima insertada con éxito");
+            } else {
+                response.status(500); // Establecer el estado a 500 si hubo un error
+                return new Gson().toJson("Error al insertar materia prima");
+            }
+        } catch (Exception e) {
+            response.status(500); // Establecer el estado a 500 en caso de error
+            return new Gson().toJson("Error controlador: " + e.getMessage()); // Devolver mensaje de error
+        }
+    };
 }
