@@ -21,4 +21,4 @@ public class Main {
         get("/materias-primas", MateriaPrimaControlador.getTodasLasMateriasPrimas);
         // post("/materias-primas", MateriaPrimaControlador.insertar_materiaP);
     }
-}
+};
