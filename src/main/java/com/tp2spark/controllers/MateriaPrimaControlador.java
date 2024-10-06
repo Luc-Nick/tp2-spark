@@ -40,10 +40,15 @@ public class MateriaPrimaControlador {
 
         try {
             // Convertir el cuerpo de la solicitud JSON a un objeto MateriaPrima
-            MateriaPrima materiaPrima = new Gson().fromJson(request.body(), MateriaPrima.class);
-
+            MateriaPrima materiaPrima = new Gson().fromJson(request.body(), MateriaPrima.class); // utilizo el metodo
+                                                                                                 // fromJson para
+                                                                                                 // converitr el json
+                                                                                                 // que viene a un
+                                                                                                 // objeto
+            // ago una instancia de json para usar sus metodos
             // Llamar al método insert del DAO
-            boolean resultado = materiaPrimaDAO.insert(materiaPrima);
+            boolean resultado = materiaPrimaDAO.insert(materiaPrima); // uso la consulta de insertar del dao para poner
+                                                                      // la materia prima
 
             if (resultado) {
                 response.status(201); // Establecer el estado a 201 si la inserción fue exitosa
@@ -57,4 +62,5 @@ public class MateriaPrimaControlador {
             return new Gson().toJson("Error controlador: " + e.getMessage()); // Devolver mensaje de error
         }
     };
+
 }
