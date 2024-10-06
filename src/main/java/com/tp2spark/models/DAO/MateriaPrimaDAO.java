@@ -61,5 +61,11 @@ public class MateriaPrimaDAO {
     // -------------------(b) Obtener una propiedad/materia
     // prima/inquilino/categor´ıa por su
     // ID-------------------------------------------------------------------------
+    public MateriaPrima obtener_por_id(int id) {
+        MateriaPrima a;
+        String id_string = String.valueOf(id);
+        String obtenerSql = "SELECT * FROM MATERIA_PRIMA WHERE id = '" + id_string + "'";
+        // Resto del código para ejecutar la consulta
 
+    }
 }
