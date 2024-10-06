@@ -5,15 +5,15 @@ public class MateriaPrima {
     private int stock;
     private String nombre;
     private String descripcion;
-    private String unidadMedida;
+    private String unidadMdedida;
 
     // Constructor
-    public MateriaPrima(int id, int stock, String nombre, String descripcion, String unidadMedida) {
+    public MateriaPrima(int id, int stock, String nombre, String descripcion, String unidadMdedida) {
         this.id = id;
         this.stock = stock;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.unidadMedida = unidadMedida;
+        this.unidadMdedida = unidadMdedida;
     }
 
     // Getters y Setters
@@ -50,11 +50,11 @@ public class MateriaPrima {
     }
 
     public String getUnidadMedida() {
-        return unidadMedida;
+        return unidadMdedida;
     }
 
     public void setUnidadMedida(String unidadMedida) {
-        this.unidadMedida = unidadMedida;
+        this.unidadMdedida = unidadMdedida;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class MateriaPrima {
                 ", stock=" + stock +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", unidadMedida='" + unidadMedida + '\'' +
+                ", unidadMedida='" + unidadMdedida + '\'' +
                 '}';
     }
 }
