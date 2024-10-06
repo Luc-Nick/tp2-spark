@@ -7,7 +7,8 @@ import org.sql2o.Connection;
 import java.util.List;
 
 public class MateriaPrimaDAO {
-
+    // -------(c) Obtener todos las propiedades/materias
+    // primas/inquilinos/categor´ıas------------------------------------------------
     public List<MateriaPrima> selectAll() {
         // La consulta SQL para obtener todas las materias primas
         String selectAllSQL = "SELECT * FROM MATERIA_PRIMA;";
@@ -34,6 +35,8 @@ public class MateriaPrimaDAO {
     }
 
     // Método para insertar una nueva materia prima
+    // -------------------(a) Agregar una propiedad/materia
+    // prima/inquilino/categor´ıa-----------------------------------------------------------
     public boolean insert(MateriaPrima materiaPrima) { // dependencia
         // La consulta SQL para insertar una nueva materia prima
         String insertSQL = "INSERT INTO MATERIA_PRIMA (id, stock, nombre, descripcion, unidadMdedida) VALUES (:id, :stock, :nombre, :descripcion, :unidadMedida)";
@@ -54,4 +57,9 @@ public class MateriaPrimaDAO {
             // con add parameter remplazo los valores que use en la consulta
         }
     }
+
+    // -------------------(b) Obtener una propiedad/materia
+    // prima/inquilino/categor´ıa por su
+    // ID-------------------------------------------------------------------------
+
 }
