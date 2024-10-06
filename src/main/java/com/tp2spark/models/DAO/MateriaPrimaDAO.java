@@ -79,4 +79,8 @@ public class MateriaPrimaDAO {
         // MateriaPrima.class // nose bien que hace
         return null; // Retorna null si no se encuentra ninguna materia prima
     }
+
+    public void actualizar(MateriaPrima materiaprima) {
+    }
+
 }

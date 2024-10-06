@@ -15,7 +15,7 @@ import spark.Route;
 public class MateriaPrimaControlador {
 
     private static MateriaPrimaDAO materiaPrimaDAO = new MateriaPrimaDAO(); // Crear una instancia del DAO
-
+    // -----------(c)----------------------------------------------------------------------------
     // Ruta para obtener todas las materias primas
     public static Route getTodasLasMateriasPrimas = (Request request, Response response) -> {
         response.type("application/json"); // Establecer el tipo de contenido de la respuesta
@@ -34,7 +34,7 @@ public class MateriaPrimaControlador {
             return new Gson().toJson("Error controlador: " + e.getMessage()); // Devolver mensaje de error
         }
     };
-
+    // -----------------(a)---------------------------------------------------------------------------
     public static Route insertar_materiaP = (Request request, Response response) -> {
         response.type("application/json"); // Establecer el tipo de contenido de la respuesta
 
@@ -62,7 +62,7 @@ public class MateriaPrimaControlador {
             return new Gson().toJson("Error controlador: " + e.getMessage()); // Devolver mensaje de error
         }
     };
-
+    // -------------------------------(b)----------------------------------------------------------------
     public static Route buscarPorId = (Request request, Response response) -> {
         // Obtener el id del parámetro de la solicitud
         int id = Integer.parseInt(request.params(":id"));
