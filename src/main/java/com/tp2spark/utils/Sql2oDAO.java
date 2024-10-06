@@ -18,3 +18,6 @@ public class Sql2oDAO {
         return sql2o;
     }
 }
+
+// en lugar de tener todo el codigo de acceso a la bd por todo el codigo yso el
+// dao
